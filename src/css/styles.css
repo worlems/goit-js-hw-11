@@ -51,7 +51,7 @@ button[type='submit'] {
   border-radius: 8px;
 }
 
-.list {
+.gallery {
   display: flex;
   gap: 24px;
   align-items: center;
