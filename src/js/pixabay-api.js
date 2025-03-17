@@ -1,19 +1,24 @@
+import axios from 'axios';
+
 const apiKey = '49253539-084e8be9ad99f0e2743df86f8';
 
-const pixApi = data => {
+const pixApi = async data => {
   const searchParams = new URLSearchParams({
+    key: apiKey,
+    q: data,
     image_type: 'photo',
     orientation: 'horizontal',
-    safesearch: true,
+    safesearch: 'true',
   });
-  return fetch(
-    `https://pixabay.com/api/?key=${apiKey}&q=${data}&${searchParams}`
-  ).then(response => {
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    return response.json();
-  });
+
+  try {
+    const response = await axios.get(
+      `https://pixabay.com/api/?${searchParams}`
+    );
+    return response.data;
+  } catch (error) {
+    throw new Error(error.response?.status || error.message);
+  }
 };
 
 export default pixApi;

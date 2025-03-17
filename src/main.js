@@ -37,7 +37,7 @@ form.addEventListener('submit', e => {
       }
     })
     .catch(error => {
-      console.error(error);
+      console.error(error.message);
       iziToast.show({
         title: '',
         message: 'Sorry, check your internet connection!',
