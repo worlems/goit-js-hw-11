@@ -17,7 +17,7 @@ const pixApi = async data => {
     );
     return response.data;
   } catch (error) {
-    throw new Error(error.response?.status || error.message);
+    throw new Error(error.message);
   }
 };
 
